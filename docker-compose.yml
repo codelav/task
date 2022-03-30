@@ -1,0 +1,21 @@
+version: '2.4'
+
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./docker/nginx/Dockerfile
+    depends_on:
+      - php
+    volumes:
+      - ./:/code
+    ports:
+      - 8088:80
+  php:
+    build:
+      context: ./
+      dockerfile: ./docker/php/Dockerfile
+    volumes:
+      - ./:/code
+    expose:
+      - 9000
