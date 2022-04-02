@@ -1,8 +1,8 @@
 service_confirm:
   path:       /confirm
   methods:    [POST]
-  controller: App\Controller\ConfirmController
+  controller: App\Controller\Service\ConfirmController
 service_offers:
   path:       /offers
   methods:    [GET]
-  controller: App\Controller\OffersController
+  controller: App\Controller\Service\OffersController
