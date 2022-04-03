@@ -1,3 +1,5 @@
+# make composer-install wd=./ - main composer file
+# make composer-install wd=tools/php-cs-fixer - cs-fixer composer file
 composer-install:
 	docker run --rm \
 	--volume $(CURDIR):/app \
@@ -6,4 +8,10 @@ composer-install:
 	composer install \
 	--no-suggest \
 	--prefer-dist \
-	--optimize-autoloader
+	--optimize-autoloader \
+	--working-dir=$(wd)
+
+fix-cs:
+	docker-compose \
+	-f docker-compose.yml \
+	exec -T php php /code/tools/php-cs-fixer/vendor/bin/php-cs-fixer fix /code/src
